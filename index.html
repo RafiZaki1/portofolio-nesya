@@ -1,0 +1,1126 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Tema dipasang sebelum render agar tidak berkedip -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') root.setAttribute('data-theme', t);
+      } catch (e) { /* penyimpanan diblokir: ikuti prefers-color-scheme */ }
+    })();
+  </script>
+
+  <!-- ============================================================
+       DATA YANG SERING DIGANTI (cari komentar EDIT)
+       Nama, email, lokasi, dan isi pengalaman ada di HTML di bawah.
+       ============================================================ -->
+
+  <title>Nesya Cahaya Artianti — Portofolio Perbankan Syariah</title>
+  <meta name="description" content="Portofolio Nesya Cahaya Artianti, siswi Layanan Perbankan Syariah SMK Negeri 2 Mojokerto. Pengalaman PKL 6 bulan di BPKPD Kota Mojokerto dalam administrasi dan pengarsipan.">
+  <meta name="theme-color" content="#14213D" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0B1222" media="(prefers-color-scheme: dark)">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:title" content="Nesya Cahaya Artianti — Portofolio Perbankan Syariah">
+  <meta property="og:description" content="Siswi Layanan Perbankan Syariah yang teliti dan disiplin, dengan pengalaman administrasi perkantoran.">
+  <meta property="og:url" content="https://nesya-cahaya.vercel.app/"><!-- EDIT: ganti dengan URL setelah deploy -->
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Nesya Cahaya Artianti — Portofolio Perbankan Syariah">
+  <meta name="twitter:description" content="Siswi Layanan Perbankan Syariah yang teliti dan disiplin, dengan pengalaman administrasi perkantoran.">
+
+  <link rel="canonical" href="https://nesya-cahaya.vercel.app/"><!-- EDIT: samakan dengan og:url -->
+
+  <!-- Favicon: monogram NC (SVG inline) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='2' y='2' width='44' height='44' rx='8' fill='%2314213D' stroke='%23D4AF5A' stroke-width='2'/%3E%3Ctext x='24' y='31' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23D4AF5A'%3ENC%3C/text%3E%3C/svg%3E">
+
+  <!-- Font: Google Fonts (satu-satunya sumber eksternal) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
+
+  <!-- Data terstruktur schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nesya Cahaya Artianti",
+    "jobTitle": "Siswi Layanan Perbankan Syariah",
+    "email": "mailto:nesyacahaya2@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Mojokerto",
+      "addressRegion": "Jawa Timur",
+      "addressCountry": "ID"
+    },
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "SMK Negeri 2 Mojokerto"
+    }
+  }
+  </script>
+
+  <style>
+    /* ---------- Token warna (terang default; gelap mengikuti prefers-color-scheme) ---------- */
+    :root {
+      --bg: #FAF8F3;
+      --surface: #FFFFFF;
+      --text: #1B1F2A;
+      --muted: #5A5F6B;
+      --navy: #14213D;
+      --gold: #B8923A;
+      --gold-ink: #8A6A22;      /* emas untuk teks kecil di latar terang (kontras AA) */
+      --green: #2E4A3E;
+      --line: #E7E1D3;
+      --on-navy: #F4F1EA;
+      --on-navy-muted: #C3C9D6;
+      --gold-on-navy: #D9B765;
+      --hl: rgba(184, 146, 58, .14);
+      --shadow: 0 1px 2px rgba(20, 33, 61, .06), 0 10px 30px rgba(20, 33, 61, .08);
+      color-scheme: light;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0E1320;
+        --surface: #161D2E;
+        --text: #E8E4DA;
+        --muted: #AEB5C6;
+        --navy: #0B1222;
+        --gold: #D4AF5A;
+        --gold-ink: #D4AF5A;
+        --green: #2E4A3E;
+        --line: #2E3A57;
+        --on-navy: #F4F1EA;
+        --on-navy-muted: #C3C9D6;
+        --gold-on-navy: #E6C77A;
+        --hl: rgba(212, 175, 90, .14);
+        --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+        color-scheme: dark;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0E1320;
+      --surface: #161D2E;
+      --text: #E8E4DA;
+      --muted: #AEB5C6;
+      --navy: #0B1222;
+      --gold: #D4AF5A;
+      --gold-ink: #D4AF5A;
+      --green: #2E4A3E;
+      --line: #2E3A57;
+      --on-navy: #F4F1EA;
+      --on-navy-muted: #C3C9D6;
+      --gold-on-navy: #E6C77A;
+      --hl: rgba(212, 175, 90, .14);
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+      color-scheme: dark;
+    }
+
+    /* ---------- Dasar ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; }
+    h1, h2, h3 { margin: 0; font-weight: 500; line-height: 1.15; }
+    p { margin: 0; }
+    ul { margin: 0; padding: 0; list-style: none; }
+    [hidden] { display: none !important; }
+    .serif { font-family: Fraunces, Georgia, "Times New Roman", serif; }
+    .container { width: min(1120px, 100% - 32px); margin-inline: auto; }
+    .icon { width: 20px; height: 20px; flex: none; }
+    .deco { position: absolute; pointer-events: none; color: var(--gold-on-navy); opacity: .08; }
+
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+    .hero :focus-visible, .cta :focus-visible, .site-header :focus-visible { outline-color: var(--gold-on-navy); }
+
+    .skip-link {
+      position: absolute; left: 16px; top: -60px; z-index: 100;
+      background: var(--gold); color: var(--navy); padding: .6rem 1rem;
+      border-radius: 8px; font-weight: 600; text-decoration: none;
+    }
+    .skip-link:focus { top: 16px; }
+
+    section { scroll-margin-top: 84px; }
+
+    /* ---------- Tombol ---------- */
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .8rem 1.25rem; border-radius: 10px; border: 1px solid transparent;
+      font: inherit; font-weight: 600; font-size: .95rem; text-decoration: none;
+      cursor: pointer; transition: transform .15s, background .2s, border-color .2s, color .2s;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-gold { background: var(--gold); color: var(--navy); }
+    .btn-gold:hover { background: var(--gold-on-navy); }
+    .btn-ghost { background: transparent; color: var(--on-navy); border-color: rgba(244, 241, 234, .3); }
+    .btn-ghost:hover { border-color: var(--gold-on-navy); color: var(--gold-on-navy); }
+    .btn-line { background: var(--surface); color: var(--text); border-color: var(--line); }
+    .btn-line:hover { border-color: var(--gold); }
+    .btn svg { width: 18px; height: 18px; }
+
+    /* ---------- Navigasi (transparan di atas hero, solid saat di-scroll) ---------- */
+    .site-header {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      background: transparent; transition: background .3s, box-shadow .3s;
+    }
+    .site-header.is-solid { background: var(--navy); box-shadow: 0 6px 24px rgba(0, 0, 0, .18); }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 76px; width: min(1120px, 100% - 32px); margin-inline: auto;
+    }
+    .nav-right { min-width: 0; }
+    .brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; color: var(--on-navy); font-weight: 600; }
+    .monogram {
+      width: 40px; height: 40px; border: 1px solid var(--gold-on-navy); border-radius: 6px;
+      display: grid; place-items: center; font-family: Fraunces, Georgia, serif;
+      color: var(--gold-on-navy); font-size: .95rem; font-weight: 600; letter-spacing: .02em;
+    }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links { display: flex; gap: 1.6rem; }
+    .nav-links a {
+      color: var(--on-navy-muted); text-decoration: none; font-size: .92rem; font-weight: 500;
+      padding: .3rem 0; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s;
+    }
+    .nav-links a:hover, .nav-links a[aria-current="true"] { color: var(--gold-on-navy); }
+    .nav-links a[aria-current="true"] { border-bottom-color: var(--gold-on-navy); }
+    .icon-btn {
+      width: 40px; height: 40px; display: grid; place-items: center; border-radius: 10px;
+      background: transparent; border: 1px solid rgba(244, 241, 234, .2); color: var(--on-navy);
+      cursor: pointer; padding: 0;
+    }
+    .icon-btn:hover { border-color: var(--gold-on-navy); color: var(--gold-on-navy); }
+    .theme-toggle .icon-sun { display: none; }
+    :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+    :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+      :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+    }
+    :root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+    :root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+    .nav-toggle { display: none; }
+    .nav-toggle span { display: block; width: 18px; height: 2px; background: currentColor; margin: 4px auto; transition: transform .2s, opacity .2s; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative; overflow: hidden; background: var(--navy); color: var(--on-navy);
+      min-height: min(85vh, 780px); display: flex; align-items: center;
+      padding: 130px 0 150px;
+    }
+    .hero-grid {
+      position: relative; z-index: 1; display: grid;
+      grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center;
+    }
+    .eyebrow {
+      font-size: .78rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold-on-navy);
+    }
+    .hero h1 {
+      font-family: Fraunces, Georgia, serif; font-weight: 400;
+      font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1.04; margin: .9rem 0 1.4rem;
+      letter-spacing: -.01em;
+    }
+    .hero h1 .gold { color: var(--gold-on-navy); display: block; }
+    .hero-lead { color: var(--on-navy-muted); font-size: 1.08rem; max-width: 46ch; }
+    .status {
+      display: inline-flex; align-items: center; gap: .55rem; margin-top: 1.6rem;
+      padding: .45rem .95rem; border: 1px solid rgba(244, 241, 234, .22); border-radius: 999px;
+      font-size: .88rem; color: var(--on-navy);
+    }
+    .status::before {
+      content: ""; width: 8px; height: 8px; border-radius: 50%; background: #3DBE8B;
+      box-shadow: 0 0 0 4px rgba(61, 190, 139, .18);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.6rem; }
+
+    /* Kartu bank (ilustrasi pengganti foto) */
+    .bank-wrap { display: grid; place-items: center; }
+    .bank {
+      position: relative; width: min(100%, 390px); aspect-ratio: 1.586;
+      border-radius: 18px; padding: 1.5rem 1.6rem; color: var(--on-navy);
+      background: linear-gradient(135deg, #2A3E6B 0%, #14213D 60%, #0B1222 100%);
+      border: 1px solid rgba(217, 183, 101, .35);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, .35);
+      transform: rotate(-6deg);
+      animation: bank-float 6s ease-in-out infinite;
+      overflow: hidden;
+    }
+    .bank::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(120deg, rgba(255, 255, 255, .12), transparent 40%);
+    }
+    .bank-chip {
+      width: 46px; height: 34px; border-radius: 6px;
+      background: linear-gradient(135deg, #F2D98A, #B8923A);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .15);
+    }
+    .bank-nfc { position: absolute; top: 1.4rem; right: 1.6rem; width: 22px; height: 22px; color: var(--gold-on-navy); }
+    .bank-school {
+      position: absolute; left: 1.6rem; top: 50%; transform: translateY(-40%);
+      font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--on-navy-muted);
+    }
+    .bank-mono {
+      position: absolute; right: 1.6rem; bottom: 3.6rem;
+      font-family: Fraunces, Georgia, serif; font-size: 1.9rem; color: var(--gold-on-navy);
+    }
+    .bank-name {
+      position: absolute; left: 1.6rem; bottom: 1.3rem;
+      font-size: .9rem; letter-spacing: .18em; text-transform: uppercase;
+    }
+    @keyframes bank-float {
+      0%, 100% { transform: translateY(0) rotate(-6deg); }
+      50% { transform: translateY(-10px) rotate(-6deg); }
+    }
+
+    /* Ornamen bintang 8 sudut */
+    .deco--tr { top: -90px; right: -90px; width: 380px; height: 380px; }
+    .deco--bl { bottom: -120px; left: -120px; width: 300px; height: 300px; }
+
+    /* ---------- Pita statistik ---------- */
+    .stats {
+      position: relative; z-index: 2; margin-top: -84px;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+      box-shadow: var(--shadow); overflow: hidden;
+    }
+    .stat { padding: 1.4rem 1.6rem; }
+    .stat + .stat { border-left: 1px solid var(--line); }
+    .stat-num { font-family: Fraunces, Georgia, serif; font-size: 2rem; line-height: 1.1; }
+    .stat-label { color: var(--muted); font-size: .9rem; margin-top: .25rem; }
+
+    /* ---------- Section umum ---------- */
+    .section { padding: 96px 0 0; }
+    .section-head { margin-bottom: 2.4rem; }
+    .section-head h2 {
+      font-family: Fraunces, Georgia, serif; font-weight: 400;
+      font-size: clamp(1.9rem, 3.6vw, 2.5rem); margin-top: .6rem; letter-spacing: -.01em;
+    }
+    .eyebrow--ink { color: var(--gold-ink); }
+    .head-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1.2rem; }
+    .sub-label {
+      font-size: .75rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: .5rem;
+    }
+
+    /* Tentang saya */
+    .about { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: start; }
+    .about h2 {
+      font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(1.9rem, 3.6vw, 2.5rem);
+      margin: .6rem 0 1.2rem; letter-spacing: -.01em;
+    }
+    .about p { color: var(--muted); max-width: 60ch; }
+    .values { display: grid; gap: 1.1rem; }
+    .value {
+      display: grid; grid-template-columns: 40px 1fr; gap: .9rem; align-items: start;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 1.1rem 1.2rem;
+    }
+    .value-ico {
+      width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center;
+      border: 1px solid var(--gold); color: var(--gold-ink);
+    }
+    .value strong { display: block; font-weight: 600; }
+    .value span { color: var(--muted); font-size: .95rem; }
+
+    /* Filter */
+    .filters { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .filter {
+      font: inherit; font-size: .9rem; font-weight: 500; cursor: pointer;
+      padding: .5rem .95rem; border-radius: 8px;
+      background: var(--surface); color: var(--muted); border: 1px solid var(--line);
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .filter:hover { border-color: var(--gold); color: var(--text); }
+    .filter[aria-pressed="true"] { background: var(--navy); color: var(--on-navy); border-color: var(--navy); }
+    :root[data-theme="dark"] .filter[aria-pressed="true"] { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .filter[aria-pressed="true"] { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+    }
+    .filter-status { font-size: .88rem; color: var(--muted); margin-bottom: 1.2rem; }
+    .is-dim { opacity: .45; }
+
+    /* Pengalaman (accordion) */
+    .exp {
+      background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--gold);
+      border-radius: 14px; box-shadow: var(--shadow); overflow: hidden;
+    }
+    .exp-toggle {
+      all: unset; box-sizing: border-box; width: 100%; cursor: pointer;
+      display: grid; grid-template-columns: 1fr auto auto; gap: 1rem; align-items: center;
+      padding: 1.4rem 1.6rem;
+    }
+    .exp-toggle:focus-visible { outline: 3px solid var(--gold); outline-offset: -3px; }
+    .exp-role { display: block; font-weight: 600; font-size: 1.08rem; }
+    .exp-org { display: block; color: var(--muted); font-size: .95rem; }
+    .exp-period { color: var(--gold-ink); font-weight: 600; font-size: .92rem; white-space: nowrap; }
+    .chev { width: 20px; height: 20px; color: var(--muted); transition: transform .25s; }
+    .exp-toggle[aria-expanded="false"] .chev { transform: rotate(-90deg); }
+    .exp-body { padding: 0 1.6rem 1.6rem; }
+    .tasks { border-top: 1px solid var(--line); padding-top: .8rem; display: grid; gap: .25rem; }
+    .task {
+      display: grid; grid-template-columns: 18px 1fr; gap: .6rem; align-items: start;
+      padding: .55rem .75rem; border-radius: 8px; transition: background .2s, opacity .2s;
+    }
+    .task::before {
+      content: ""; width: 6px; height: 6px; margin-top: .6rem; border-radius: 50%; background: var(--gold);
+    }
+    .task.is-hit { background: var(--hl); }
+
+    /* Hasil kerja */
+    .works { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .work {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+      overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow);
+      transition: opacity .25s, border-color .25s;
+    }
+    .work.is-hit { border-color: var(--gold); }
+    .panel { height: 140px; display: grid; place-items: center; }
+    .panel--navy { background: var(--navy); color: var(--gold-on-navy); }
+    .panel--gold { background: #B8923A; color: #14213D; }
+    .panel--green { background: var(--green); color: #E6C77A; }
+    .panel svg { width: 56px; height: 56px; }
+    .work-body { padding: 1.3rem 1.4rem 1.5rem; display: grid; gap: .6rem; }
+    .work h3 { font-family: Fraunces, Georgia, serif; font-size: 1.25rem; font-weight: 500; }
+    .work .ctx { color: var(--muted); font-size: .92rem; }
+    .work .line { font-size: .95rem; }
+    .lbl { font-weight: 600; color: var(--gold-ink); margin-right: .3rem; }
+
+    /* Keahlian */
+    .skills { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .skill {
+      display: flex; align-items: center; gap: .8rem; min-height: 78px;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+      padding: 1rem 1.1rem; font-weight: 500; transition: border-color .2s, transform .2s;
+    }
+    .skill:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .skill-ico {
+      width: 36px; height: 36px; flex: none; border-radius: 9px; display: grid; place-items: center;
+      background: var(--hl); color: var(--gold-ink);
+    }
+    .skill-ico svg { width: 18px; height: 18px; }
+    .groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 2.4rem; }
+    .group-val { font-size: 1rem; }
+
+    /* Pendidikan & sertifikasi */
+    .edu { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+      padding: 1.6rem; display: grid; grid-template-columns: 44px 1fr; gap: 1rem; align-items: start;
+    }
+    .card--dashed { border-style: dashed; background: transparent; }
+    .card-ico {
+      width: 44px; height: 44px; border-radius: 11px; display: grid; place-items: center;
+      background: var(--hl); color: var(--gold-ink);
+    }
+    .card h3 { font-size: 1.12rem; font-weight: 600; font-family: Inter, system-ui, sans-serif; }
+    .card .meta { color: var(--muted); font-size: .95rem; }
+    .card .years { color: var(--gold-ink); font-weight: 600; font-size: .92rem; margin-top: .5rem; }
+
+    /* Kontak */
+    .cta {
+      position: relative; overflow: hidden; margin-top: 96px; margin-bottom: 96px;
+      background: var(--navy); color: var(--on-navy); border-radius: 24px;
+      padding: clamp(2rem, 5vw, 3.6rem);
+    }
+    .cta h2 {
+      font-family: Fraunces, Georgia, serif; font-weight: 400;
+      font-size: clamp(1.9rem, 4vw, 2.7rem); margin: .6rem 0 1.4rem; letter-spacing: -.01em;
+    }
+    .contact-row { display: flex; flex-wrap: wrap; gap: .8rem 2rem; position: relative; z-index: 1; }
+    .contact-row a, .contact-row span {
+      display: inline-flex; align-items: center; gap: .55rem; color: var(--on-navy);
+      text-decoration: none; font-size: .98rem;
+    }
+    .contact-row a:hover { color: var(--gold-on-navy); text-decoration: underline; text-underline-offset: 4px; }
+    .contact-row svg { width: 18px; height: 18px; color: var(--gold-on-navy); }
+    .cta-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; position: relative; z-index: 1; }
+    .copy-status { min-height: 1.4em; margin-top: .9rem; font-size: .9rem; color: var(--on-navy-muted); position: relative; z-index: 1; }
+    .cta .deco { color: var(--gold-on-navy); opacity: .1; }
+    .cta .deco--tr { top: -70px; right: -70px; width: 300px; height: 300px; }
+    .cta .deco--bl { bottom: -90px; left: -90px; width: 240px; height: 240px; }
+
+    /* Footer */
+    .site-footer { border-top: 1px solid var(--line); padding: 1.6rem 0 2.2rem; color: var(--muted); font-size: .92rem; }
+    .site-footer .container { text-align: center; }
+
+    /* ---------- Animasi muncul saat scroll (hanya jika JS aktif) ---------- */
+    .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .js .reveal.is-visible { opacity: 1; transform: none; }
+
+    /* Item grid boleh menyusut agar tidak melebar keluar layar di HP */
+    .hero-grid > *, .about > *, .edu > *, .stats > *, .works > *, .skills > *,
+    .groups > *, .values > *, .work > *, .exp > * { min-width: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+
+    /* ---------- Responsif ---------- */
+    @media (max-width: 1000px) {
+      .skills { grid-template-columns: repeat(3, 1fr); }
+      .works { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 880px) {
+      .nav-toggle { display: block; background: transparent; border: 1px solid rgba(244,241,234,.2); color: var(--on-navy); width: 42px; height: 42px; border-radius: 10px; cursor: pointer; padding: 0; }
+      .nav-links {
+        position: absolute; top: 76px; left: 0; right: 0; flex-direction: column; gap: 0;
+        background: var(--navy); padding: .5rem 16px 1rem; display: none;
+        border-top: 1px solid rgba(244,241,234,.08);
+      }
+      .site-header.is-open .nav-links { display: flex; }
+      .nav-links a { display: block; padding: .8rem 0; border-bottom: 1px solid rgba(244,241,234,.08); }
+      .nav-links a[aria-current="true"] { border-bottom-color: rgba(244,241,234,.08); }
+      .hero { padding: 120px 0 130px; min-height: 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .bank-wrap { order: 2; }
+      .bank { width: min(100%, 300px); padding: 1.2rem 1.3rem; }
+      .bank-mono { font-size: 1.5rem; bottom: 3rem; }
+      .about { grid-template-columns: 1fr; gap: 36px; }
+      .edu { grid-template-columns: 1fr; }
+      .groups { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 720px) {
+      .section { padding-top: 72px; }
+      .stat { padding: 1.1rem .9rem; }
+      .stat-num { font-size: 1.6rem; }
+      .stat-label { font-size: .8rem; }
+      .works { grid-template-columns: 1fr; }
+      .skills { grid-template-columns: 1fr 1fr; }
+      .groups { grid-template-columns: 1fr; gap: 20px; }
+      .exp-toggle { grid-template-columns: 1fr auto; padding: 1.2rem; }
+      .exp-toggle .chev { display: none; }
+      .exp-body { padding: 0 1.2rem 1.2rem; }
+      .exp-period { grid-column: 1 / -1; grid-row: 2; }
+      .exp-toggle { row-gap: .4rem; }
+      .cta { padding: 1.8rem 1.4rem; border-radius: 18px; }
+      .cta-actions .btn { flex: 1 1 auto; justify-content: center; }
+    }
+    @media (max-width: 380px) {
+      .monogram { width: 36px; height: 36px; }
+      .skills { grid-template-columns: 1fr; }
+    }
+
+    /* Gerak berkurang */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+
+    /* ---------- Cetak sebagai CV ---------- */
+    @media print {
+      @page { size: A4; margin: 14mm; }
+      :root, :root[data-theme="dark"] {
+        --bg: #fff; --surface: #fff; --text: #000; --muted: #333; --navy: #fff; --gold: #000;
+        --gold-ink: #000; --green: #fff; --line: #bbb; --on-navy: #000; --on-navy-muted: #333;
+        --gold-on-navy: #000; --hl: #f2f2f2;
+      }
+      body { background: #fff; color: #000; font-size: 10.5pt; overflow: visible; }
+      .skip-link, .site-header, .deco, .filters, .filter-status, .bank-wrap, .btn, .icon-btn,
+      .cta-actions, .copy-status, .chev, .status::before, .nav-toggle, .site-footer .back { display: none !important; }
+      .hero { background: #fff; color: #000; padding: 0; min-height: 0; overflow: visible; }
+      .hero-grid { display: block; }
+      .hero h1 { font-size: 26pt; margin: 4pt 0 6pt; }
+      .hero h1 .gold { color: #000; display: inline; }
+      .hero-lead, .stat-label, .about p, .work .ctx, .card .meta, .value span { color: #333; }
+      .status { border: 0; padding: 0; color: #000; }
+      .eyebrow, .eyebrow--ink, .lbl, .exp-period, .card .years { color: #000; }
+      .stats { margin: 12pt 0 0; box-shadow: none; border-color: #bbb; }
+      .stat-num { font-size: 16pt; }
+      .section { padding: 14pt 0 0; }
+      .section-head { margin-bottom: 8pt; }
+      .section-head h2, .about h2, .cta h2 { font-size: 16pt; margin-top: 2pt; }
+      .about { display: block; }
+      .values { display: block; }
+      .value { display: block; border: 0; padding: 0; margin-bottom: 4pt; border-radius: 0; background: none; }
+      .value-ico { display: none; }
+      .exp { box-shadow: none; border: 1px solid #bbb; border-left: 2px solid #000; break-inside: avoid; }
+      .exp-body { display: block !important; padding: 0 12pt 10pt; }
+      .exp-toggle { padding: 10pt 12pt; }
+      .task { break-inside: avoid; padding: 2pt 4pt; }
+      .task.is-hit { background: none; }
+      .task.is-dim, .work.is-dim, .is-dim { opacity: 1; }
+      .works { display: block; }
+      .work { box-shadow: none; break-inside: avoid; margin-bottom: 10pt; border: 1px solid #bbb; }
+      .panel { display: none; }
+      .work-body { padding: 10pt; }
+      .work h3 { font-size: 12pt; }
+      .skills { grid-template-columns: repeat(3, 1fr); gap: 6pt; }
+      .skill { min-height: 0; padding: 6pt; border: 1px solid #bbb; box-shadow: none; }
+      .skill:hover { transform: none; }
+      .skill-ico { display: none; }
+      .groups { margin-top: 10pt; gap: 10pt; }
+      .edu { display: block; }
+      .card { display: block; box-shadow: none; border: 1px solid #bbb; margin-bottom: 8pt; break-inside: avoid; padding: 8pt 10pt; }
+      .card-ico { display: none; }
+      .card--dashed { border-style: solid; }
+      .cta { background: none; color: #000; padding: 0; margin: 14pt 0 0; border-radius: 0; overflow: visible; }
+      .contact-row { display: block; }
+      .contact-row a, .contact-row span { color: #000; display: block; margin-bottom: 2pt; }
+      .contact-row svg { display: none; }
+      .contact-row a[href^="http"]::after { content: " (" attr(href) ")"; color: #333; font-size: 9pt; }
+      .site-footer { border-top: 1px solid #bbb; color: #333; padding: 8pt 0 0; }
+      .reveal, .js .reveal { opacity: 1 !important; transform: none !important; }
+      a { text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tautan lewati navigasi untuk pengguna keyboard -->
+  <a class="skip-link" href="#konten">Lewati ke konten</a>
+
+  <!-- Navigasi: menempel (fixed), transparan di hero lalu solid saat di-scroll -->
+  <header class="site-header" id="header">
+    <nav class="nav" aria-label="Navigasi utama">
+      <a class="brand" href="#beranda" aria-label="Nesya Cahaya Artianti, ke awal halaman">
+        <span class="monogram" aria-hidden="true">NC</span>
+        <span>Nesya</span>
+      </a>
+      <div class="nav-right">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#tentang">Tentang</a></li>
+          <li><a href="#pengalaman">Pengalaman</a></li>
+          <li><a href="#karya">Karya</a></li>
+          <li><a href="#keahlian">Keahlian</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+        <!-- Tombol mode terang/gelap -->
+        <button class="icon-btn theme-toggle" type="button" id="theme-toggle" aria-label="Ganti mode terang/gelap">
+          <svg class="icon icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+          <svg class="icon icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <!-- Menu hamburger (HP) -->
+        <button class="nav-toggle" type="button" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Buka menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="konten" tabindex="-1">
+
+    <!-- HERO -->
+    <section id="beranda" class="hero" aria-labelledby="judul-hero">
+      <svg class="deco deco--tr" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width=".6" aria-hidden="true">
+        <rect x="30" y="30" width="60" height="60"/>
+        <rect x="30" y="30" width="60" height="60" transform="rotate(45 60 60)"/>
+      </svg>
+      <svg class="deco deco--bl" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width=".6" aria-hidden="true">
+        <rect x="30" y="30" width="60" height="60"/>
+        <rect x="30" y="30" width="60" height="60" transform="rotate(45 60 60)"/>
+      </svg>
+
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">Portofolio · Perbankan Syariah</p>
+          <h1 id="judul-hero">
+            <span>Halo, saya</span>
+            <span class="gold">Nesya Cahaya</span>
+            <span>Artianti.</span>
+          </h1>
+          <p class="hero-lead">Siswi Layanan Perbankan Syariah yang teliti dan disiplin, dengan pengalaman administrasi perkantoran selama Praktik Kerja Lapangan 6 bulan.</p>
+          <p class="status">Terbuka untuk kerja dan magang</p>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="#kontak">Hubungi saya</a>
+            <a class="btn btn-ghost" href="#karya">
+              Lihat karya
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="bank-wrap">
+          <div class="bank" role="img" aria-label="Ilustrasi kartu identitas: Nesya Cahaya Artianti, SMKN 2 Mojokerto">
+            <div class="bank-chip"></div>
+            <svg class="bank-nfc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M8.5 9.5a4 4 0 0 1 0 5M12 7a7 7 0 0 1 0 10M15.5 4.5a10 10 0 0 1 0 15"/></svg>
+            <span class="bank-school">SMKN 2 · MJK</span>
+            <span class="bank-mono">NC</span>
+            <span class="bank-name">Nesya C. Artianti</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PITA STATISTIK: jumlah dihitung dari data di bawah (lihat script) -->
+    <div class="container">
+      <div class="stats reveal" role="list" aria-label="Ringkasan">
+        <div class="stat" role="listitem">
+          <div class="stat-num">6 bulan</div>
+          <div class="stat-label">PKL di BPKPD Kota Mojokerto</div>
+        </div>
+        <div class="stat" role="listitem">
+          <div class="stat-num" id="stat-keahlian">5</div>
+          <div class="stat-label">Keahlian administrasi</div>
+        </div>
+        <div class="stat" role="listitem">
+          <div class="stat-num" id="stat-hasil">3</div>
+          <div class="stat-label">Hasil kerja selama PKL</div>
+        </div>
+      </div>
+
+      <!-- TENTANG SAYA -->
+      <section id="tentang" class="section about reveal" aria-labelledby="judul-tentang">
+        <div>
+          <p class="eyebrow eyebrow--ink">Tentang saya</p>
+          <h2 id="judul-tentang">Teliti dalam detail, rapi dalam administrasi.</h2>
+          <!-- EDIT: ringkasan diri, sesuaikan jika ada perubahan -->
+          <p>Siswi Layanan Perbankan Syariah di SMK Negeri 2 Mojokerto dengan ketertarikan pada keuangan, perbankan, dan administrasi. Menjalani PKL 6 bulan di BPKPD Kota Mojokerto, mempelajari pencatatan nomor SPPD dan SK, pengarsipan, serta pelayanan administrasi.</p>
+        </div>
+
+        <!-- EDIT: 3 nilai yang ditawarkan -->
+        <ul class="values">
+          <li class="value">
+            <span class="value-ico" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span>
+            <div><strong>Teliti</strong><span>Mencatat dan memeriksa nomor surat serta dokumen.</span></div>
+          </li>
+          <li class="value">
+            <span class="value-ico" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+            <div><strong>Disiplin</strong><span>Menjalankan tugas kantor sesuai arahan dan jadwal.</span></div>
+          </li>
+          <li class="value">
+            <span class="value-ico" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+            <div><strong>Bertanggung jawab</strong><span>Menyelesaikan tugas yang diberikan pegawai.</span></div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- PENGALAMAN -->
+      <section id="pengalaman" class="section reveal" aria-labelledby="judul-pengalaman">
+        <div class="section-head head-row">
+          <div>
+            <p class="eyebrow eyebrow--ink">Pengalaman</p>
+            <h2 id="judul-pengalaman">Perjalanan kerja</h2>
+          </div>
+          <!-- Filter berdasarkan keahlian (aria-pressed) -->
+          <div class="filters" role="group" aria-label="Filter berdasarkan keahlian">
+            <button class="filter" type="button" data-filter="all" aria-pressed="true">Semua</button>
+            <button class="filter" type="button" data-filter="Pencatatan Surat" aria-pressed="false">Pencatatan surat</button>
+            <button class="filter" type="button" data-filter="Pengarsipan" aria-pressed="false">Pengarsipan</button>
+            <button class="filter" type="button" data-filter="Administrasi Perkantoran" aria-pressed="false">Administrasi</button>
+          </div>
+        </div>
+        <p class="filter-status" id="filter-status" aria-live="polite"></p>
+
+        <!-- EDIT: pengalaman organisasi/ekskul/kepanitiaan. Aktifkan dengan menyalin blok di bawah ke sini.
+             <article class="exp reveal" data-tags="">
+               <div class="exp-heading">
+                 <button class="exp-toggle" type="button" aria-expanded="true" aria-controls="exp-org-1">
+                   <span><span class="exp-role">Jabatan</span><span class="exp-org">Nama organisasi</span></span>
+                   <span class="exp-period">Bulan Tahun – Bulan Tahun</span>
+                   <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                 </button>
+               </div>
+               <div id="exp-org-1" class="exp-body"><ul class="tasks"><li class="task" data-tags="Administrasi Perkantoran">Uraian tugas</li></ul></div>
+             </article>
+        -->
+
+        <article class="exp reveal">
+          <div class="exp-heading">
+            <button class="exp-toggle" type="button" aria-expanded="true" aria-controls="exp-pkl">
+              <span>
+                <span class="exp-role">Peserta Praktik Kerja Lapangan (PKL)</span>
+                <span class="exp-org">BPKPD Kota Mojokerto · Mojokerto</span>
+              </span>
+              <!-- EDIT: ganti dengan bulan-tahun asli, durasi tetap 6 bulan -->
+              <span class="exp-period">Jan – Jun 2026</span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div id="exp-pkl" class="exp-body">
+            <ul class="tasks">
+              <li class="task" data-tags="Pencatatan Surat">Membantu mencatat nomor Surat Perintah Perjalanan Dinas (SPPD) dan SK</li>
+              <li class="task" data-tags="Pengelolaan Dokumen, Pengarsipan">Membantu mengelola dan menata dokumen administrasi</li>
+              <li class="task" data-tags="Administrasi Perkantoran">Mempelajari proses surat-menyurat di kantor</li>
+              <li class="task" data-tags="Pelayanan Administrasi">Melaksanakan tugas yang diberikan oleh pegawai</li>
+              <li class="task" data-tags="Administrasi Perkantoran">Mengikuti kegiatan rutin kantor</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <!-- KARYA / HASIL KERJA: studi kasus singkat tanpa gambar -->
+      <section id="karya" class="section reveal" aria-labelledby="judul-karya">
+        <div class="section-head">
+          <p class="eyebrow eyebrow--ink">Karya</p>
+          <h2 id="judul-karya">Hasil kerja selama PKL</h2>
+        </div>
+
+        <div class="works">
+          <article class="work" data-tags="Pencatatan Surat">
+            <div class="panel panel--navy" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6h22l12 12v40H18z"/><path d="M40 6v12h12"/><path d="M26 30h18M26 38h18M26 46h10"/></svg>
+            </div>
+            <div class="work-body">
+              <h3>Pencatatan Nomor SPPD &amp; SK</h3>
+              <p class="ctx">Administrasi perjalanan dinas dan surat keputusan di BPKPD.</p>
+              <p class="line"><span class="lbl">Peran</span>Membantu mencatat nomor surat sesuai arahan pegawai.</p>
+              <p class="line"><span class="lbl">Belajar</span>Ketelitian penomoran dan alur pencatatan surat resmi.</p>
+            </div>
+          </article>
+
+          <article class="work" data-tags="Administrasi Perkantoran">
+            <div class="panel panel--gold" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="48" height="32" rx="3"/><path d="M8 19l24 16 24-16"/></svg>
+            </div>
+            <div class="work-body">
+              <h3>Surat-Menyurat Kantor</h3>
+              <p class="ctx">Pengelolaan surat masuk dan surat keluar instansi.</p>
+              <p class="line"><span class="lbl">Peran</span>Mempelajari dan membantu proses surat-menyurat.</p>
+              <p class="line"><span class="lbl">Belajar</span>Alur surat resmi pemerintahan daerah.</p>
+            </div>
+          </article>
+
+          <article class="work" data-tags="Pengarsipan, Pengelolaan Dokumen">
+            <div class="panel panel--green" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16h18l5 6h29v28H6z"/><path d="M6 26h52"/><path d="M22 36h20"/></svg>
+            </div>
+            <div class="work-body">
+              <h3>Penataan &amp; Pengarsipan Dokumen</h3>
+              <p class="ctx">Dokumen administrasi kantor yang perlu disimpan rapi.</p>
+              <p class="line"><span class="lbl">Peran</span>Membantu menata dan mengarsipkan dokumen.</p>
+              <p class="line"><span class="lbl">Belajar</span>Sistem arsip agar dokumen mudah ditemukan kembali.</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- EDIT: aktifkan template ini jika ada proyek tambahan
+        <article class="work" data-tags="Pengarsipan">...</article>
+        -->
+      </section>
+
+      <!-- KEAHLIAN & ALAT -->
+      <section id="keahlian" class="section reveal" aria-labelledby="judul-keahlian">
+        <div class="section-head">
+          <p class="eyebrow eyebrow--ink">Keahlian</p>
+          <h2 id="judul-keahlian">Keahlian dan alat</h2>
+        </div>
+
+        <!-- Keahlian hard skill (jumlah dihitung otomatis) -->
+        <ul class="skills">
+          <li class="skill">
+            <span class="skill-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v13H3z"/><path d="M3 7l2-3h14l2 3"/><path d="M10 12h4"/></svg></span>
+            Pengarsipan
+          </li>
+          <li class="skill">
+            <span class="skill-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 17h4"/></svg></span>
+            Pencatatan surat
+          </li>
+          <li class="skill">
+            <span class="skill-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 4v16"/></svg></span>
+            Administrasi perkantoran
+          </li>
+          <li class="skill">
+            <span class="skill-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span>
+            Pengelolaan dokumen
+          </li>
+          <li class="skill">
+            <span class="skill-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 16 0"/><path d="M8 20h8M12 12v8"/><circle cx="12" cy="8" r="0.5"/></svg></span>
+            Pelayanan administrasi
+          </li>
+        </ul>
+
+        <div class="groups">
+          <div>
+            <p class="sub-label">Sikap kerja</p>
+            <p class="group-val">Disiplin · Teliti · Bertanggung jawab</p>
+          </div>
+          <div>
+            <p class="sub-label">Alat</p>
+            <p class="group-val">Microsoft Excel</p>
+          </div>
+          <div>
+            <p class="sub-label">Bahasa</p>
+            <!-- EDIT: tambahkan Bahasa Inggris beserta levelnya jika ada -->
+            <p class="group-val">Bahasa Indonesia (penutur asli)</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PENDIDIKAN & SERTIFIKASI -->
+      <section id="pendidikan" class="section reveal" aria-labelledby="judul-pendidikan">
+        <div class="section-head">
+          <p class="eyebrow eyebrow--ink">Latar belakang</p>
+          <h2 id="judul-pendidikan">Pendidikan dan sertifikasi</h2>
+        </div>
+
+        <div class="edu">
+          <article class="card">
+            <span class="card-ico" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></span>
+            <div>
+              <h3>SMK Negeri 2 Mojokerto</h3>
+              <p class="meta">Layanan Perbankan Syariah</p>
+              <!-- EDIT: tahun masuk – lulus asli -->
+              <p class="years">2024 – 2027</p>
+            </div>
+          </article>
+
+          <article class="card card--dashed">
+            <span class="card-ico" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M9 14l-2 7 5-3 5 3-2-7"/></svg></span>
+            <div>
+              <h3>Sertifikasi</h3>
+              <p class="meta">Belum memiliki sertifikasi nasional — terbuka untuk mengikuti pelatihan dan sertifikasi.</p>
+            </div>
+          </article>
+          <!-- EDIT: aktifkan template kartu sertifikat jika sudah memiliki sertifikat
+          <article class="card">
+            <span class="card-ico" aria-hidden="true">...</span>
+            <div><h3>Nama sertifikat</h3><p class="meta">Lembaga penerbit</p><p class="years">Tahun</p></div>
+          </article>
+          -->
+        </div>
+      </section>
+
+      <!-- KONTAK -->
+      <section id="kontak" class="cta reveal" aria-labelledby="judul-kontak">
+        <svg class="deco deco--tr" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width=".6" aria-hidden="true">
+          <rect x="30" y="30" width="60" height="60"/>
+          <rect x="30" y="30" width="60" height="60" transform="rotate(45 60 60)"/>
+        </svg>
+        <svg class="deco deco--bl" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width=".6" aria-hidden="true">
+          <rect x="30" y="30" width="60" height="60"/>
+          <rect x="30" y="30" width="60" height="60" transform="rotate(45 60 60)"/>
+        </svg>
+
+        <p class="eyebrow">Kontak</p>
+        <h2 id="judul-kontak">Siap bergabung dengan tim Anda.</h2>
+
+        <div class="contact-row">
+          <a href="mailto:nesyacahaya2@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            nesyacahaya2@gmail.com
+          </a>
+          <!-- EDIT: nomor WhatsApp dalam format 62… tanpa tanda + atau spasi -->
+          <a href="https://wa.me/6281234567890" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.5 7.5L3 21l1.5-5.2A8.5 8.5 0 1 1 21 12z"/></svg>
+            WhatsApp
+          </a>
+          <!-- EDIT: ganti USERNAME dengan username Instagram -->
+          <a href="https://instagram.com/USERNAME" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>
+            Instagram
+          </a>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            Mojokerto, Jawa Timur
+          </span>
+        </div>
+
+        <div class="cta-actions">
+          <a class="btn btn-gold" href="mailto:nesyacahaya2@gmail.com">Kirim email</a>
+          <button class="btn btn-ghost" type="button" id="copy-email">Salin email</button>
+          <button class="btn btn-ghost" type="button" id="print-cv">Unduh CV</button>
+        </div>
+        <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer sederhana -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year">2026</span> Nesya Cahaya Artianti</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var root = document.documentElement;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
+      var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
+
+      /* 1. Tahun berjalan di footer */
+      var year = $('#year');
+      if (year) year.textContent = new Date().getFullYear();
+
+      /* 2. Angka statistik dihitung dari data */
+      var kStat = $('#stat-keahlian');
+      if (kStat) kStat.textContent = $$('.skill').length;
+      var hStat = $('#stat-hasil');
+      if (hStat) hStat.textContent = $$('.work').length;
+
+      /* 3. Tema terang/gelap manual (localStorage dengan try/catch) */
+      function isDark() {
+        var t = root.getAttribute('data-theme');
+        if (t === 'dark') return true;
+        if (t === 'light') return false;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+      var themeBtn = $('#theme-toggle');
+      if (themeBtn) {
+        themeBtn.addEventListener('click', function () {
+          var next = isDark() ? 'light' : 'dark';
+          root.setAttribute('data-theme', next);
+          try { localStorage.setItem('theme', next); } catch (e) { /* diblokir: berlaku untuk sesi ini */ }
+        });
+      }
+
+      /* 4. Header menjadi solid saat di-scroll */
+      var header = $('#header');
+      function onScroll() {
+        header.classList.toggle('is-solid', window.scrollY > 24);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      /* 5. Menu hamburger di HP */
+      var navToggle = $('#nav-toggle');
+      function setMenu(open) {
+        header.classList.toggle('is-open', open);
+        navToggle.setAttribute('aria-expanded', String(open));
+        navToggle.setAttribute('aria-label', open ? 'Tutup menu' : 'Buka menu');
+      }
+      navToggle.addEventListener('click', function () {
+        setMenu(navToggle.getAttribute('aria-expanded') !== 'true');
+      });
+      $$('#nav-links a').forEach(function (a) {
+        a.addEventListener('click', function () { setMenu(false); });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && header.classList.contains('is-open')) {
+          setMenu(false);
+          navToggle.focus();
+        }
+      });
+
+      /* 6. Menu aktif mengikuti section yang sedang dibaca */
+      var links = $$('#nav-links a');
+      if ('IntersectionObserver' in window) {
+        var spy = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var id = entry.target.id;
+            links.forEach(function (a) {
+              a.setAttribute('aria-current', a.getAttribute('href') === '#' + id ? 'true' : 'false');
+            });
+          });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        ['tentang', 'pengalaman', 'karya', 'keahlian', 'kontak'].forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el) spy.observe(el);
+        });
+      }
+
+      /* 7. Pengalaman bisa dibuka-tutup (aria-expanded + aria-controls) */
+      $$('.exp-toggle').forEach(function (btn) {
+        var body = document.getElementById(btn.getAttribute('aria-controls'));
+        if (!body) return;
+        btn.addEventListener('click', function () {
+          var open = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!open));
+          body.hidden = open;
+        });
+      });
+
+      /* 8. Filter keahlian: sorot yang cocok, redupkan sisanya (tidak dihapus) */
+      var filterBtns = $$('.filter');
+      var filterItems = $$('[data-tags]');
+      var filterStatus = $('#filter-status');
+      var filterLabels = {};
+      filterBtns.forEach(function (b) { filterLabels[b.getAttribute('data-filter')] = b.textContent.trim(); });
+
+      function tagsOf(el) {
+        return (el.getAttribute('data-tags') || '').split(',').map(function (s) { return s.trim(); });
+      }
+
+      function applyFilter(value) {
+        var count = 0;
+        filterBtns.forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.getAttribute('data-filter') === value));
+        });
+        filterItems.forEach(function (el) {
+          var isTask = el.classList.contains('task');
+          var match = value === 'all' || tagsOf(el).indexOf(value) !== -1;
+          if (match) count++;
+          if (isTask) {
+            el.classList.toggle('is-hit', value !== 'all' && match);
+            el.classList.toggle('is-dim', value !== 'all' && !match);
+          } else {
+            el.classList.toggle('is-dim', value !== 'all' && !match);
+            el.classList.toggle('is-hit', value !== 'all' && match);
+          }
+        });
+        filterStatus.textContent = value === 'all'
+          ? 'Menampilkan semua tugas dan hasil kerja.'
+          : count + ' tugas atau hasil kerja cocok dengan "' + filterLabels[value] + '".';
+      }
+
+      filterBtns.forEach(function (b) {
+        b.addEventListener('click', function () { applyFilter(b.getAttribute('data-filter')); });
+      });
+
+      /* 9. Salin email dengan fallback aman */
+      var EMAIL = 'nesyacahaya2@gmail.com';
+      var copyBtn = $('#copy-email');
+      var copyStatus = $('#copy-status');
+
+      function fallbackCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+        document.body.removeChild(ta);
+        return ok;
+      }
+
+      copyBtn.addEventListener('click', function () {
+        var done = function () { copyStatus.textContent = 'Email disalin'; };
+        var fail = function () { copyStatus.textContent = 'Gagal menyalin. Silakan salin manual: ' + EMAIL; };
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(EMAIL).then(done, function () {
+            fallbackCopy(EMAIL) ? done() : fail();
+          });
+        } else {
+          fallbackCopy(EMAIL) ? done() : fail();
+        }
+      });
+
+      /* 10. Unduh CV = cetak halaman (CSS print menyusun versi CV) */
+      var printBtn = $('#print-cv');
+      printBtn.addEventListener('click', function () { window.print(); });
+
+      /* 11. Animasi muncul saat scroll (menghormati prefers-reduced-motion) */
+      var reveals = $$('.reveal');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        reveals.forEach(function (el) { el.classList.add('is-visible'); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(function (el) { io.observe(el); });
+      }
+    })();
+  </script>
+</body>
+</html>
